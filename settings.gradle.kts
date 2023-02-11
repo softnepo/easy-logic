@@ -3,7 +3,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-
 }
 
 rootProject.name = "easy-logic"

@@ -17,8 +17,5 @@ repositories {
 dependencies {
     api("com.android.tools.build:gradle:7.4.0")
     api("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0")
+    api(gradleApi())
 }
-
-//tasks.getByName<Test>("test") {
-//    useJUnitPlatform()
-//}
