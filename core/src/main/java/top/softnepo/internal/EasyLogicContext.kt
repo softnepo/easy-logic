@@ -1,10 +1,10 @@
-package top.softnepo.core
+package top.softnepo.internal
 
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.plugins.ExtensionAware
 
-internal interface EasyLogicContext {
+interface EasyLogicContext {
     companion object {
         const val REFERENCE_KOTLIN_OPTIONS : String = "kotlinOptions"
         const val DEPENDENCY_IMPLEMENTATION : String = "implementation"
@@ -15,7 +15,7 @@ internal interface EasyLogicContext {
     }
 
     fun buildLog(description: String) {
-        println("> EasyLogicContext : $description")
+        println("> ${this::class.simpleName} : $description")
     }
 
     fun <T> LibraryExtension.getExtensionAwareScope(

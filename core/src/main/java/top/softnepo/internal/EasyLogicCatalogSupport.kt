@@ -1,8 +1,8 @@
-package top.softnepo.core
+package top.softnepo.internal
 
 import org.gradle.api.artifacts.VersionCatalog
 
-internal interface EasyLogicCatalogSupport : EasyLogicContext {
+interface EasyLogicCatalogSupport : EasyLogicContext {
     val versionCatalog: VersionCatalog
 
     fun EasyLogicCatalogSupport.findCatalogLibrary(library: String): Any {

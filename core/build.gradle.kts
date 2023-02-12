@@ -1,5 +1,6 @@
 plugins {
     `kotlin-dsl`
+    `maven-publish`
 }
 
 group = "top.softnepo.easy.logic"
@@ -17,5 +18,17 @@ repositories {
 dependencies {
     api("com.android.tools.build:gradle:7.4.0")
     api("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0")
-    api(gradleApi())
+    compileOnly(gradleApi())
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("easyLogic") {
+            groupId = "top.softnepo"
+            artifactId = "logic"
+            version = "0.0.14-experimental"
+
+            from(components["java"])
+        }
+    }
 }

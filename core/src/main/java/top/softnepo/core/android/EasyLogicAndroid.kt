@@ -9,12 +9,12 @@ import com.android.build.gradle.internal.dsl.BuildType
 import com.android.build.gradle.internal.dsl.ProductFlavor
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.internal.DefaultDomainObjectSet
-import top.softnepo.core.EasyLogicContext
+import top.softnepo.internal.EasyLogicContext
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 typealias AndroidDefaultConfig = com.android.build.gradle.internal.dsl.DefaultConfig
 
-internal interface EasyLogicAndroid : EasyLogicContext {
+interface EasyLogicAndroid : EasyLogicContext {
 
     var compileSdk: Int?
     var packageName: String?

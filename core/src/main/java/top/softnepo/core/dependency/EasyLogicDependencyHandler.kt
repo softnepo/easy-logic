@@ -1,8 +1,8 @@
 package top.softnepo.core.dependency
 
-import top.softnepo.core.EasyLogicContext
+import top.softnepo.internal.EasyLogicContext
 
-internal interface EasyLogicDependencyHandler<T> : EasyLogicContext {
+interface EasyLogicDependencyHandler<T> : EasyLogicContext {
     fun implementation(reference: T)
     fun testImplementation(reference: T)
     fun kapt(reference: T)

@@ -4,10 +4,10 @@ import com.android.build.api.dsl.CompileOptions
 import com.android.build.api.dsl.DefaultConfig
 import com.android.build.gradle.LibraryExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import top.softnepo.core.EasyLogicContext
+import top.softnepo.internal.EasyLogicContext
 
 class EasyLogicAndroidScope(
-        override val common: LibraryExtension
+   override val common: LibraryExtension
 ) : EasyLogicAndroidDelegate() {
 
     override fun onDefaultConfig(config: DefaultConfig.() -> Unit) {

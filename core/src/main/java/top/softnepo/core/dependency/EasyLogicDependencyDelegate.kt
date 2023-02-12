@@ -1,12 +1,11 @@
 package top.softnepo.core.dependency
 
 import org.gradle.kotlin.dsl.DependencyHandlerScope
-import top.softnepo.core.EasyLogicContext.Companion.DEPENDENCY_ANDROID_TEST_IMPLEMENTATION
-import top.softnepo.core.EasyLogicContext.Companion.DEPENDENCY_IMPLEMENTATION
-import top.softnepo.core.EasyLogicContext.Companion.DEPENDENCY_KAPT
-import top.softnepo.core.EasyLogicContext.Companion.DEPENDENCY_KAPT_ANDROID_TEST
-import top.softnepo.core.EasyLogicContext.Companion.DEPENDENCY_TEST_IMPLEMENTATION
-import org.gradle.api.Project
+import top.softnepo.internal.EasyLogicContext.Companion.DEPENDENCY_ANDROID_TEST_IMPLEMENTATION
+import top.softnepo.internal.EasyLogicContext.Companion.DEPENDENCY_IMPLEMENTATION
+import top.softnepo.internal.EasyLogicContext.Companion.DEPENDENCY_KAPT
+import top.softnepo.internal.EasyLogicContext.Companion.DEPENDENCY_KAPT_ANDROID_TEST
+import top.softnepo.internal.EasyLogicContext.Companion.DEPENDENCY_TEST_IMPLEMENTATION
 import org.gradle.kotlin.dsl.project
 
 abstract class EasyLogicDependencyDelegate : EasyLogicDependencyHandler<Any> {

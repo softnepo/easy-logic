@@ -2,7 +2,7 @@ package top.softnepo.core.dependency
 
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.kotlin.dsl.DependencyHandlerScope
-import top.softnepo.core.EasyLogicCatalogSupport
+import top.softnepo.internal.EasyLogicCatalogSupport
 
 class EasyLogicDependencyScope constructor(
         override val handlerScope: DependencyHandlerScope,
