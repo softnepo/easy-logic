@@ -14,7 +14,7 @@ fun org.gradle.api.Project.`getLibrary`(onLibraryExtension: LibraryExtension.() 
 }
 
 fun org.gradle.api.Project.`getCatalog`() = extensions.getByType<VersionCatalogsExtension>().named(
-        "easyLogicLibs"
+        "libs"
 )
 
 fun org.gradle.api.Project.`easyLogicBuild`(settings: EasyLogicAndroidScope.() -> Unit) = getLibrary {

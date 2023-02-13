@@ -1,0 +1,1 @@
+./gradlew core:build core:assemble core:signLibraryMavenPublication core:publishAllPublicationsToOSSRHRepository
