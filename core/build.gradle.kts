@@ -1,17 +1,16 @@
 import org.jetbrains.kotlin.konan.file.use
 import java.util.*
 import java.net.*
-import kotlin.arrayOf
 
 plugins {
     `kotlin-dsl`
     `maven-publish`
-    `signing`
-    `java`
+    signing
+    java
 }
 
 group = "top.softnepo.easy-logic"
-sourceSets.main { java.srcDirs(arrayOf("src")) }
+version = "0.0.11-experimental"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -45,7 +44,7 @@ afterEvaluate {
             create<MavenPublication>("libraryMaven") {
                 groupId = "top.softnepo"
                 artifactId = "easy-logic"
-                version = "0.0.4-experimental"
+                version = "0.0.12-experimental"
 
                 from(components["java"])
 
@@ -91,10 +90,7 @@ afterEvaluate {
         }
     }
 
-    configure<SigningExtension> {
-        isRequired = true
-        val publishing: PublishingExtension by project
-        useGpgCmd()
-        sign(publishing.publications)
+    signing {
+        sign(publishing.publications.getByName("libraryMaven"))
     }
 }

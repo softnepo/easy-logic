@@ -13,16 +13,14 @@ fun org.gradle.api.Project.`getLibrary`(onLibraryExtension: LibraryExtension.() 
     onLibraryExtension(this)
 }
 
-fun org.gradle.api.Project.`getCatalog`() = extensions.getByType<VersionCatalogsExtension>().named(
-        "libs"
-)
+fun org.gradle.api.Project.`getCatalogApi`() = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 fun org.gradle.api.Project.`easyLogicBuild`(settings: EasyLogicAndroidScope.() -> Unit) = getLibrary {
     settings(EasyLogicAndroidScope(this))
 }
 
 fun org.gradle.api.Project.`easyLogicDependency`(settings: EasyLogicDependencyScope.() -> Unit) = dependencies {
-    settings(EasyLogicDependencyScope(this, getCatalog()))
+    settings(EasyLogicDependencyScope(this, getCatalogApi()))
 }
 
 fun org.gradle.api.Project.`easyLogicPlugins`(settings: EasyLogicPluginManagerScope.() -> Unit) = settings(EasyLogicPluginManagerScope(pluginManager))
