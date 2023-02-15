@@ -10,7 +10,10 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+env:
+  sign_secretKeyRingFile: ${{ secrets.sign_secretKeyRingFile }}
+  sign_password: ${{ secrets.sign_password }}
+  sign_keyId: ${{ secrets.sign_keyId }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -25,7 +28,13 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Verify file
-        run: echo "${{secrets.sign_secretKeyRingFile}}"
+        run: if [ -z "$sign_secretKeyRingFile" ]; then echo "OFF" else echo "ON"
+
+      - name: Verify pass
+        run: if [ -z "sign_password" ]; then echo "OFF" else echo "ON"
+
+      - name: Verify key
+        run: if [ -z "sign_keyId" ]; then echo "OFF" else echo "ON"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -38,3 +47,4 @@ jobs:
 
       - name: Publish new version
         run: ./publish.sh
+
