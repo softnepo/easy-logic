@@ -32,11 +32,13 @@ dependencies {
 }
 
 val propertiesGradle = Properties()
-val gradleDirectory = project.gradle.gradleUserHomeDir.path
-val gradlePropertiesDirectory = "$gradleDirectory/gradle.properties"
-val gradlePropertiesFile = project.file(gradlePropertiesDirectory)
+try {
+    val gradleDirectory = project.gradle.gradleUserHomeDir.path
+    val gradlePropertiesDirectory = "$gradleDirectory/gradle.properties"
+    val gradlePropertiesFile = project.file(gradlePropertiesDirectory)
+    gradlePropertiesFile.inputStream().use { propertiesGradle.load(it) }
+} catch (e: Exception) {}
 
-gradlePropertiesFile.inputStream().use { propertiesGradle.load(it) }
 
 afterEvaluate {
     publishing {
