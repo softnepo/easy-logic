@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI - Publish new version
 
 # Controls when the workflow will run
 on:
@@ -25,28 +25,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Verify file
-        run: if [ -z "$env.sign_secretKeyRingFile" ]; then 
-                echo "OFF" 
-             else 
-                echo "ON" 
-             fi
-
-      - name: Verify pass
-        run: if [ -z "env.sign_password" ]; then 
-               echo "OFF" 
-             else 
-               echo "ON" 
-             fi
-
-      - name: Verify key
-        run: if [ -z "env.sign_keyId" ]; then 
-               echo "OFF" 
-             else 
-               echo "ON" 
-              fi
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
