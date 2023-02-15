@@ -11,7 +11,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 env:
-  sign_secretKeyRingFile: ${{ secrets.sign_secretKeyRingFile }}
   sign_password: ${{ secrets.sign_password }}
   sign_keyId: ${{ secrets.sign_keyId }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -27,10 +26,16 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Download security file
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          file=$(curl -H "Authorization: token ${{ secrets.TOKEN }}" -H "Accept: application/vnd.github.v3.raw" -O -L https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg)
+          echo "::set-env name=sign_secretKeyRingFile::file"
+
+      ##- name: Build
+      ##  run: ./gradlew core:build
+
+      ##- name: Assemble
+      ##  run: ./gradlew core:assemble
 
       - name: Adde permision build library
         run: chmod +x ./publish.sh
