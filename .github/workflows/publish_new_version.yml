@@ -25,22 +25,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a set of commands using the runners shell
-      - name: Download security file
-        run: |
-          file=$(curl -H "Authorization: token ${{ github.token }}" -H "Accept: application/vnd.github.v3.raw" -O -L https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg)
-          env:
-           sign_secretKeyRingFile: $file
+      - name: Build
+        run: ./gradlew core:build
 
-      ##- name: Build
-      ##  run: ./gradlew core:build
-
-      ##- name: Assemble
-      ##  run: ./gradlew core:assemble
+      - name: Assemble
+        run: ./gradlew core:assemble
 
       - name: Adde permision build library
-        run: chmod +x ./publish.sh
+        run: ./gradlew sign -Psigning.secretKeyRingFile="https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg" -Psigning.password="$sign_password" -Psigning.keyId="$sign_keyId"
 
       - name: Publish new version
-        run: ./publish.sh
+        run: ./gradlew core:publishLibraryMavenPublicationToOSSRHRepository
 
