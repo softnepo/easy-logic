@@ -28,8 +28,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Download security file
         run: |
-          file=$(curl -H "Authorization: token ${{ secrets.TOKEN }}" -H "Accept: application/vnd.github.v3.raw" -O -L https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg)
-          echo "::set-env name=sign_secretKeyRingFile::file"
+          file=$(curl -H "Authorization: token ${{ github.token }}" -H "Accept: application/vnd.github.v3.raw" -O -L https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg)
+          env:
+           sign_secretKeyRingFile: $file
 
       ##- name: Build
       ##  run: ./gradlew core:build
