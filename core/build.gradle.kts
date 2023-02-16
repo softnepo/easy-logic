@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "top.softnepo.easy-logic"
-version = "0.0.11-experimental"
+version = "0.0.13-experimental"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -46,7 +46,7 @@ afterEvaluate {
             create<MavenPublication>("libraryMaven") {
                 groupId = "top.softnepo"
                 artifactId = "easy-logic"
-                version = "0.0.12-experimental"
+                version = "0.0.13-experimental"
 
                 from(components["java"])
 
