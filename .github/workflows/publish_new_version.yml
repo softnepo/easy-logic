@@ -32,7 +32,11 @@ jobs:
         run: ./gradlew core:assemble
 
       - name: Adde permision build library
-        run: ./gradlew sign -Psigning.secretKeyRingFile="https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg" -Psigning.password="$sign_password" -Psigning.keyId="$sign_keyId"
+        run: |
+          file=$(curl -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" -o ./key.gpg https://github.com/softnepo/security/blob/main/gpg/softnepo-secret-key.gpg)
+          
+      - name: Sign
+        run: ./gradlew sign -Psigning.secretKeyRingFile=$(cat ./key.gpg) -Psigning.password="$sign_password" -Psigning.keyId="$sign_keyId"
 
       - name: Publish new version
         run: ./gradlew core:publishLibraryMavenPublicationToOSSRHRepository
