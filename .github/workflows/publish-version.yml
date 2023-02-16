@@ -24,8 +24,8 @@ jobs:
         with:
           java-version: '11'
 
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
+      # - name: Make Gradle executable
+      #  run: chmod +x gradlew
         
       - name: Build project
         run: ./gradlew core:build --scan
